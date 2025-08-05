@@ -45,7 +45,27 @@
 
         <section>
           <section>
-            <h2></h2>
+            <h2>Who wrote that code?</h2>
+          </section>
+          <section>
+            <p>Git allows a developer to set a name and email. These are just config settings, and any value can be used as input.</p>
+            <pre><code data-trim class="language-bash">
+              $ git config user.name "Timeea Saratean"
+              $ git config user.email "tsaratean@opentext.com"
+              $ git commit -m "Critical security patch (not really)"
+            </code></pre>
+
+            <p><span class="hl">This commit can be pushed to GitLab</span>, and it will show the name and avatar of the account registered for that email.</p>
+            <strong><em>There is no way to spot this as a fake.</em></strong>
+          </section>
+          <section>
+            <p>This is a real vulnerability that can be used to:</p>
+            <ul>
+              <li><span class="hl">Inject malicious code</span> under a trusted name.</li>
+              <li>Create confusion between colleagues.</li>
+              <li>Target developers for <span class="hl">bad conduct and security investigations</span>.</li>
+            </ul>
+          </section>
           </section>
         </section>
       </div>
