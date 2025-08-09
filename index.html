@@ -69,10 +69,48 @@
         </section>
         <section>
           <section>
-            <h2>The Cryptographic signature</h2>
+            <h2>The cryptographic signature</h2>
           </section>
           <section>
-            
+            <p><span class="hl">Commits can be signed cryptographically on git itself</span>. The signature confirms the commits can only be created by the person who holds the private key and its password.</p>
+            <p><em>This is different than the standard SSh auth used by GitLab and GitHub.</em></p>
+          </section>
+          <section>
+            <h5>How it works</h5>
+            <ul>
+              <li>Generate a <span class="hl">public/private</span> key pair.</li>
+              <li>Store the <span class="hl">private key</span> on your machine.</li>
+              <li>Upload your <span class="hl">public key</span> on GitLab.</li>
+              <li>When you commit, Git uses your private key to sign the commit's hash.</li>
+              <li>When you push, GitLab uses your private key to verify the signature.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section><h2>the "Verified" badge</h2></section>
+          <section>
+            <p>This is the badge GitLab displays for signed commits.</p>
+            <img src="/imgs/verified.jpg" alt="Verified badge from GitLab">
+            <p>This badge confirms GitLab has cryptographically confirmed the author's commit identity.</p>
+          </section>
+        </section>
+        <section>
+          <section><h2>Benefits</h2></section>
+          <section>
+            <h5>Authenticity</h5>
+            <p>Signed commits can't be spoofed. Your identity is protected from external attackers or malicious insiders.</p>
+          </section>
+          <section>
+            <h5>Accountability</h5>
+            <p>There is no ambiguity for code authorship. Signed commits cannot be altered without losing their original signature.</p>
+          </section>
+          <section>
+            <h5>Integrity</h5>
+            <p>Being able to prove our code is exactly what our developers intended is a fundamental sign of trust.</p>
+          </section>
+          <section>
+            <h5>Security compliance</h5>
+            <p>For security audits like SOC 2 or ISO 27001, signed commits are a requirement and a huge plus.</p>
           </section>
         </section>
       </div>
