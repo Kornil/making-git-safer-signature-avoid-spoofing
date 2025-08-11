@@ -61,9 +61,9 @@
           <section>
             <p>This is a real vulnerability that can be used to:</p>
             <ul>
-              <li><span class="hl">Inject malicious code</span> under a trusted name.</li>
+              <li><span class="hl">Inject malicious code</span> under a legitimate name.</li>
               <li>Create confusion between colleagues.</li>
-              <li>Target developers for <span class="hl">bad conduct and security investigations</span>.</li>
+              <li>Target developers for discrepancies that could trigger <span class="hl">security investigations</span>.</li>
             </ul>
           </section>
         </section>
@@ -72,17 +72,18 @@
             <h2>The cryptographic signature</h2>
           </section>
           <section>
-            <p><span class="hl">Commits can be signed cryptographically on git itself</span>. The signature confirms the commits can only be created by the person who holds the private key and its password.</p>
-            <p><em>This is different than the standard SSh auth used by GitLab and GitHub.</em></p>
+            <h3>Commits can be signed cryptographically on git with an SSH or a GPG key.</h3>
+            <p>The signature confirms the commits was created by the person who holds the <span class="hl">private key</span> and its <span class="hl">password</span>.</p>
+            <p><em>The SSH key used on GitHub/GitLab only athenticates a user for fetch and push operations on their platform.</em></p>
           </section>
           <section>
             <h5>How it works</h5>
             <ul>
               <li>Generate a <span class="hl">public/private</span> key pair.</li>
               <li>Store the <span class="hl">private key</span> on your machine.</li>
-              <li>Upload your <span class="hl">public key</span> on GitLab.</li>
+              <li>Upload your <span class="hl">public key</span> on GitHub/GitLab.</li>
               <li>When you commit, Git uses your private key to sign the commit's hash.</li>
-              <li>When you push, GitLab uses your private key to verify the signature.</li>
+              <li>When you push, GitHub/GitLab uses your public key to verify the signature made by your private key.</li>
             </ul>
           </section>
         </section>
@@ -90,7 +91,8 @@
           <section><h2>the "Verified" badge</h2></section>
           <section>
             <p>This is the badge GitLab displays for signed commits.</p>
-            <img src="/imgs/verified.jpg" alt="Verified badge from GitLab">
+            <img src="/imgs/verified-gitlab.png" alt="Verified badge from GitLab">
+            <img src="/imgs/verified-github.png" alt="Verified badge from GitHub">
             <p>This badge confirms GitLab has cryptographically confirmed the author's commit identity.</p>
           </section>
         </section>
@@ -98,7 +100,7 @@
           <section><h2>Benefits</h2></section>
           <section>
             <h5>Authenticity</h5>
-            <p>Signed commits can't be spoofed. Your identity is protected from external attackers or malicious insiders.</p>
+            <p>Signed commits can't be spoofed. Your identity is protected against being impersonated by external attackers or malicious insiders.</p>
           </section>
           <section>
             <h5>Accountability</h5>
@@ -106,7 +108,7 @@
           </section>
           <section>
             <h5>Integrity</h5>
-            <p>Being able to prove our code is exactly what our developers intended is a fundamental sign of trust.</p>
+            <p>Being able to prove our code is exactly what our developers intended is a fundamental sign of trust in the codebase itself.</p>
           </section>
           <section>
             <h5>Security compliance</h5>
