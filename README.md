@@ -1,3 +1,4 @@
-# Git best practices for collaborative development
+# Making git safer
+## Signatures as a way to avoid spoofing attacks
 
-git presentation for OpenText Romania.
+git signature presentation for OpenText Romania.
