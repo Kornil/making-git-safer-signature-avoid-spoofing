@@ -137,6 +137,96 @@
             <p><em>Signed commits have become the baseline for professional development.</em></p>
           </section>
         </section>
+        <section>
+          <section><h2>5 minutes setup</h2></section>
+          <section>
+            <p>We will be using <span class="hl">GnuPG</span> a program under the GNU public license to create and store our GPG signature.</p>
+            <p><span class="hl">GPG is the golden standard for cryptographic signatures</span>. It can be harder to setup than SSH but we will go over it together.</p>
+          </section>
+          <section>
+            <p>Open your editor of choice and check if gpg is installed.</p>
+            <pre><code data-trim class="language-bash">
+              $ gpg --version
+            </code></pre>
+            <img src="imgs/gpg-version.png" alt="gpg-version command response">
+          </section>
+          <section>
+            <p>If you don't have gpg installed let's navigate to the official <a href="https://www.gnupg.org/">GNU Privacy Guard website</a> and download it.</p>
+          </section>
+          <section>
+            <p>Once GPG is installed, we can generate our keys, but first let's take a look at our git user values.</p>
+            <pre><code data-trim class="language-bash">
+              $ git config user.name # Mr. Robot
+              $ git config user.email # robot@email.com
+              
+              $ gpg --full-gen-key
+            </code></pre>
+            <ul>Options:
+              <li>RSA and RSA (1)</li>
+              <li>4096</li>
+              <li>No expiration date (0)</li>
+              <li>name from git config</li>
+              <li>email from git config</li>
+              <li>No comment</li>
+              <li><span class="hl">O</span> to finish</li>
+              <li>Pick a good password you can remember, you will use it daily.</li>
+            </ul>
+          </section>
+          <section>
+            <p>Now that we have our keys, let's list the private one. Keep this <em>private</em>.</p>
+            <p>Switch <span class="hl">robot@email.com</span> for the email used in the step above.</p>
+            <pre><code data-trim class="language-bash">
+              $ gpg --list-secret-keys --keyid-format LONG robot@email.com
+              
+              # output
+              sec   rsa4096/30F2B65B9246B6CA 2017-08-18 [SC]
+                    D5E4F29F3275DC0CDA8FFC8730F2B65B9246B6CA
+              uid                   [ultimate] Mr. Robot robot@email.com
+              ssb   rsa4096/B7ABC0813E4028C0 2017-08-18 [E]
+            </code></pre>
+          </section>
+          <section>
+            <pre><code data-trim class="language-bash">
+              # Use the ID from the previous command to configure git commit signature
+              $ git config --global user.signingkey 30F2B65B9246B6CA
+
+              # Now to enable commit signature by default
+              $ git config --global commit.gpgsign true
+
+              # Use this on windows to make sure the path is set correctly
+              $ git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
+            </code></pre>
+            <p>And just like this the git part is done.</p>
+          </section>
+          <section>
+            Now for GitLab.
+
+            <pre><code data-trim class="language-bash">
+              # Get the full public key with this command
+              # Remember to copy the full output
+              # Including the EGIN PGP PUBLIC KEY BLOCK
+              # and END PGP PUBLIC KEY BLOCK 
+
+              $ gpg --armor --export 30F2B65B9246B6CA
+            </code></pre>
+            <ul>On GitLab:
+              <li>Click on avatar.</li>
+              <li>Edit Profile.</li>
+              <li>GPG Keys.</li>
+              <li>Add new key.</li>
+              <li>Paste full key.</li>
+              <li>Save.</li>
+            </ul>
+          </section>
+          <section>
+            <p>From GitLab, navigate to the <span class="hl">Email</span> tab and make sure the registered email matches the one used for the GPG key.</p>
+            <p>If it does not, simply add it as <span class="hl">secondary email</span> and click on the confirmation link you receive on the email.</p>
+          </section>
+          <section>
+            <p>All done. <em>All your commits will automatically be signed</em>.</p>
+            <p>You can generate and register as many key as you want, adding GitHub or another email account is as easy as repeating the steps with a different email.</p>
+          </section>
+        </section>
       </div>
     </div>
 
