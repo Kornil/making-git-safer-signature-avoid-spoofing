@@ -161,13 +161,12 @@
               
               $ gpg --full-gen-key
             </code></pre>
-            <ul>Options:
+            <ul>
               <li>RSA and RSA (1)</li>
               <li>4096</li>
               <li>No expiration date (0)</li>
               <li>name from git config</li>
               <li>email from git config</li>
-              <li>No comment</li>
               <li><span class="hl">O</span> to finish</li>
               <li>Pick a good password you can remember, you will use it daily.</li>
             </ul>
@@ -199,7 +198,7 @@
             <p>And just like this the git part is done.</p>
           </section>
           <section>
-            Now for GitLab.
+            Now for GitLab (process is almost identicaly for GitHub).
 
             <pre><code data-trim class="language-bash">
               # Get the full public key with this command
@@ -224,7 +223,6 @@
           </section>
           <section>
             <p>All done. <em>All your commits will automatically be signed</em>.</p>
-            <p>You can generate and register as many key as you want, adding GitHub or another email account is as easy as repeating the steps with a different email.</p>
           </section>
         </section>
       </div>
